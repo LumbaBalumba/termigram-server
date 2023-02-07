@@ -15,8 +15,9 @@ model User {
   password    String
 }
 
-model Mesage {
-  id        Int    @id @default(autoincrement())
+model Message {
+  id        Int      @id @default(autoincrement())
   text      String
   sender_id String
+  time      DateTime
 }
