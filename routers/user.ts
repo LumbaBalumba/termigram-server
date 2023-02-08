@@ -15,4 +15,13 @@ router.post("/signup", bodyParser.json(), async function (req: Request, res: Res
     res.send(user)
 })
 
+router.post("/signin", bodyParser.json(), async function (req: Request, res: Response) {
+    const user_sign_in_dto = {
+        login: req.body.login,
+        password: req.body.password
+    }
+    const user = await user_service.signIn(user_sign_in_dto)
+    res.send(user)
+})
+
 export default router

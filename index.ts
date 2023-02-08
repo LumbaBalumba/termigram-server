@@ -1,6 +1,7 @@
 import express, {Express} from "express"
 import dotenv from "dotenv"
 import user_router from "./routers/user"
+import message_router from "./routers/message"
 
 dotenv.config()
 
@@ -16,3 +17,4 @@ app.listen(port, () => {
 })
 
 app.use("/user", user_router)
+app.use("/message", message_router)

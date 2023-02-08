@@ -21,6 +21,6 @@ model User {
 model Message {
   id        Int      @id @default(autoincrement())
   text      String
-  sender_id String
+  sender_id Int
   time      DateTime
 }
