@@ -12,10 +12,14 @@ export async function signUp({name, second_name, password, login}: UserSignUpDTO
     })
 }
 
-export async function signIn({login}: UserSignInDTO) {
-    return prisma.user.findUniqueOrThrow({
+export async function signIn({login, password: password}: UserSignInDTO) {
+    const user = await prisma.user.findUniqueOrThrow({
         where: {
             login: login
         }
     })
+    if (user.password != password) {
+        throw "Incorrect password"
+    }
+    return user
 }

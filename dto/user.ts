@@ -7,4 +7,5 @@ export type UserSignUpDTO = {
 
 export type UserSignInDTO = {
     login: string
+    password: string
 }
