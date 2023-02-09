@@ -1,5 +1,5 @@
 import {Router, Request, Response} from "express"
-import * as user_service from "../services/user"
+import * as userService from "../services/user"
 import bodyParser from "body-parser"
 
 const router = Router()
@@ -9,8 +9,13 @@ router.post("/signup", bodyParser.json(), async function (req: Request, res: Res
         login: req.body.login,
         password: req.body.password
     }
-    const user = await user_service.signUp(user_sign_up_dto)
-    res.send(user)
+    try {
+        const user = await userService.signUp(user_sign_up_dto)
+        res.send(user)
+    } catch (err) {
+        res.statusCode = 500
+        res.send(err)
+    }
 })
 
 router.post("/signin", bodyParser.json(), async function (req: Request, res: Response) {
@@ -18,8 +23,17 @@ router.post("/signin", bodyParser.json(), async function (req: Request, res: Res
         login: req.body.login,
         password: req.body.password
     }
-    const user = await user_service.signIn(user_sign_in_dto)
-    res.send(user)
+    try {
+        const user = await userService.signIn(user_sign_in_dto)
+        res.send(user)
+    } catch (err) {
+        if (err =="Incorrect password"){
+            res.statusCode = 401
+        }else{
+            res.statusCode = 404
+        }
+        res.send(err)
+    }
 })
 
 export default router
