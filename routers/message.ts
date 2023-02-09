@@ -7,16 +7,15 @@ const router = Router()
 router.post("/send", bodyParser.json(), async function (req: Request, res: Response) {
     const message_send_dto = {
         text: req.body.text,
-        sender_id: req.body.sender_id,
-        time: req.body.time
+        sender_id: parseInt(req.body.sender_id)
     }
-    const message = message_service.messageSend(message_send_dto)
+    const message = await message_service.messageSend(message_send_dto)
     res.send(message)
 })
 
 router.get("/find_by_id", bodyParser.json(), async function (req: Request, res: Response) {
-    const id = req.body.id
-    const message = message_service.messageFindById(id)
+    const id = parseInt(req.body.id)
+    const message = await message_service.messageFindById(id)
     res.send(message)
 })
 

@@ -1,5 +1,4 @@
 export type MessageSendDTO = {
     text: string,
-    sender_id: number,
-    time: string
+    sender_id: number
 }
