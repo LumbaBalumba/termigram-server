@@ -19,4 +19,10 @@ router.get("/find_by_id", bodyParser.json(), async function (req: Request, res: 
     res.send(message)
 })
 
+router.get("/get_recent", bodyParser.json(), async function (req: Request, res: Response) {
+    const quantity = parseInt(req.body.quantity)
+    const message = await message_service.messageGetRecent(quantity)
+    res.send(message)
+})
+
 export default router
