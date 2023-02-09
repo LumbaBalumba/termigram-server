@@ -10,3 +10,11 @@ export async function messageSend({text, sender_id, time}: MessageSendDTO) {
         }
     })
 }
+
+export async function messageFindById(id: number) {
+    return prisma.message.findUnique({
+        where: {
+            id: id
+        }
+    })
+}

@@ -14,4 +14,10 @@ router.post("/send", bodyParser.json(), async function (req: Request, res: Respo
     res.send(message)
 })
 
+router.get("/find_by_id", bodyParser.json(), async function (req: Request, res: Response) {
+    const id = req.body.id
+    const message = message_service.messageFindById(id)
+    res.send(message)
+})
+
 export default router
