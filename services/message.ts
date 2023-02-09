@@ -18,3 +18,12 @@ export async function messageFindById(id: number) {
         }
     })
 }
+
+export async function messageGetRecent(quantity: number) {
+    return prisma.message.findMany({
+        orderBy: {
+            time: "desc"
+        },
+        take: quantity
+    })
+}
