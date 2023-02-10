@@ -39,4 +39,4 @@ npm run dev
 **ATTENTION** : only use _main_ branch for running as other branches might be unstable!
 
 ## Contributing
-If you want to contribute to this project, you can start yourown branch and create a pull request.
+If you want to contribute to this project, you can start your own branch and create a pull request.
