@@ -36,3 +36,11 @@ export async function messageGetByReceiver(receiver_id: number) {
         }
     })
 }
+
+export async function messageDelete(id: number) {
+    return prisma.message.delete({
+        where: {
+            id: id
+        }
+    })
+}

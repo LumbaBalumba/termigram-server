@@ -48,10 +48,27 @@ router.get("/get_unreceived", bodyParser.json(), async function (req: Request, r
     const receiver_id = parseInt(req.body.receiver_id)
     if (isNaN(receiver_id)) {
         res.statusCode = 404
-        res.send("User nopt found")
+        res.send("User not found")
+    } else {
         try {
             const messages = await messageService.messageGetByReceiver(receiver_id)
             res.send(messages)
+        } catch (err) {
+            res.statusCode = 404
+            res.send(err)
+        }
+    }
+})
+
+router.delete("/delete", bodyParser.json(), async function (req: Request, res: Response) {
+    const id = parseInt(req.body.id)
+    if (isNaN(id)) {
+        res.statusCode = 404
+        res.send("User not found")
+    } else {
+        try {
+            const message = await messageService.messageDelete(id)
+            res.send(message)
         } catch (err) {
             res.statusCode = 404
             res.send(err)
