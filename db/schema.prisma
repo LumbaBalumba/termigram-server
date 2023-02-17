@@ -11,14 +11,15 @@ datasource db {
 }
 
 model User {
-  id          Int    @id @default(autoincrement())
-  login       String @unique
-  password    String
+  id       Int    @id @default(autoincrement())
+  login    String @unique
+  password String
 }
 
 model Message {
-  id        Int      @id @default(autoincrement())
-  text      String
-  sender_id Int
-  time      DateTime
+  id          Int      @id @default(autoincrement())
+  text        String
+  sender_id   Int
+  receiver_id Int
+  time        DateTime
 }

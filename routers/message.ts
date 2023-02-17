@@ -7,7 +7,8 @@ const router = Router()
 router.post("/send", bodyParser.json(), async function (req: Request, res: Response) {
     const message_send_dto = {
         text: req.body.text,
-        sender_id: parseInt(req.body.sender_id)
+        sender_id: parseInt(req.body.sender_id),
+        receiver_id: parseInt(req.body.receiver_id)
     }
     const message = await messageService.messageSend(message_send_dto)
     res.send(message)
@@ -40,6 +41,21 @@ router.get("/get_recent", bodyParser.json(), async function (req: Request, res: 
     } catch (err) {
         res.statusCode = 404
         res.send(err)
+    }
+})
+
+router.get("/get_unreceived", bodyParser.json(), async function (req: Request, res: Response) {
+    const receiver_id = parseInt(req.body.receiver_id)
+    if (isNaN(receiver_id)) {
+        res.statusCode = 404
+        res.send("User nopt found")
+        try {
+            const messages = await messageService.messageGetByReceiver(receiver_id)
+            res.send(messages)
+        } catch (err) {
+            res.statusCode = 404
+            res.send(err)
+        }
     }
 })
 
