@@ -13,7 +13,7 @@ router.post("/signup", bodyParser.json(), async function (req: Request, res: Res
         const user = await userService.signUp(user_sign_up_dto)
         res.send(user)
     } catch (err) {
-        res.statusCode = 500
+        res.statusCode = 400
         res.send(err)
     }
 })

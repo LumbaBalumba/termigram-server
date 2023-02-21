@@ -1,5 +1,5 @@
 import prisma from "./prisma-service"
-import {UserSignUpDTO, UserSignInDTO} from "../dto/user"
+import {UserSignInDTO, UserSignUpDTO} from "../dto/user"
 
 export async function signUp({login, password}: UserSignUpDTO) {
     return prisma.user.create({
@@ -20,4 +20,20 @@ export async function signIn({login, password: password}: UserSignInDTO) {
         throw "Incorrect password"
     }
     return user
+}
+
+export async function findByLogin(login: string) {
+    return prisma.user.findUniqueOrThrow({
+        where: {
+            login: login
+        }
+    });
+}
+
+export async function findById(id: number){
+    return prisma.user.findUniqueOrThrow({
+        where:{
+            id: id
+        }
+    })
 }
