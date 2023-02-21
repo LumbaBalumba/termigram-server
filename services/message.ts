@@ -2,6 +2,7 @@ import prisma from "./prisma-service"
 import {MessageSendDTO} from "../dto/message"
 
 export async function messageSend({text, sender_id, receiver_id}: MessageSendDTO) {
+
     return prisma.message.create({
         data: {
             text: text,
