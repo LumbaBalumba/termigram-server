@@ -62,7 +62,7 @@ router.get("/get_unreceived", bodyParser.json(), async function (req: Request, r
             for (let i = 0; i < messages.length; ++i) {
                 const text = messages[i].text
                 const time = messages[i].time
-                const sender = (await userService.findById(messages[i].receiver_id)).login
+                const sender = (await userService.findById(messages[i].sender_id)).login
                 const id = messages[i].id
                 messages_final.push({id: id, text: text, sender: sender, time: time.toTimeString()})
             }
