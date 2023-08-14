@@ -26,7 +26,7 @@ sqlite3 mydb.db
  .exit
 ```
 
-In thst case, your DATABASE_URL will be "file:<path_to_termigram-server_folder/db/mydb.db"
+In that case, your DATABASE_URL will be "file:<path_to_termigram-server_folder/db/mydb.db"
 
 
 ## Running
