@@ -12,7 +12,7 @@ npm install
 touch .env
 ```
 
-The you need to add these environment variables to your .env file:
+Then you need to add these environment variables to your .env file:
 ```
 PORT="<your_port>"
 DATABASE_URL="<your_database_url>"
