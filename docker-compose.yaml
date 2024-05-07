@@ -1,0 +1,22 @@
+services:
+  pgdb:
+    image: postgres:latest
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgresdata:/var/lib/postgres/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d lis_time_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+  backend:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - pgdb
+volumes:
+  postgresdata:

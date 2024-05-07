@@ -1,0 +1,34 @@
+
+> termigram-server@1.0.0 dev
+> concurrently "npx tsc --watch" "nodemon -q dist/index.ts"
+
+[1] node:internal/modules/cjs/loader:1145
+[1]   throw err;
+[1]   ^
+[1] 
+[1] Error: Cannot find module './index.ts'
+[1] Require stack:
+[1] - /home/i3alumba/Projects/termigram-server/dist/imaginaryUncacheableRequireResolveScript
+[1]     at Module._resolveFilename (node:internal/modules/cjs/loader:1142:15)
+[1]     at Function.resolve (node:internal/modules/helpers:190:19)
+[1]     at requireResolveNonCached (/home/i3alumba/Projects/termigram-server/node_modules/ts-node/dist/bin.js:549:16)
+[1]     at getProjectSearchDir (/home/i3alumba/Projects/termigram-server/node_modules/ts-node/dist/bin.js:519:40)
+[1]     at phase3 (/home/i3alumba/Projects/termigram-server/node_modules/ts-node/dist/bin.js:267:27)
+[1]     at bootstrap (/home/i3alumba/Projects/termigram-server/node_modules/ts-node/dist/bin.js:47:30)
+[1]     at main (/home/i3alumba/Projects/termigram-server/node_modules/ts-node/dist/bin.js:33:12)
+[1]     at Object.<anonymous> (/home/i3alumba/Projects/termigram-server/node_modules/ts-node/dist/bin.js:579:5)
+[1]     at Module._compile (node:internal/modules/cjs/loader:1368:14)
+[1]     at Module._extensions..js (node:internal/modules/cjs/loader:1426:10) {
+[1]   code: 'MODULE_NOT_FOUND',
+[1]   requireStack: [
+[1]     '/home/i3alumba/Projects/termigram-server/dist/imaginaryUncacheableRequireResolveScript'
+[1]   ]
+[1] }
+[1] 
+[1] Node.js v21.7.3
+[0] c1:00:27 PM - Starting compilation in watch mode...
+[0] 
+[0] 
+[0] 1:00:28 PM - Found 0 errors. Watching for file changes.
+[1] nodemon -q dist/index.ts exited with code 130
+[0] npx tsc --watch exited with code SIGINT
